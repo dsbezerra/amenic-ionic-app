@@ -1,0 +1,43 @@
+page-main {
+  .header {
+    font-size: 2.5rem;
+    font-weight: 200;
+    font-family: "Roboto", sans-serif;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .period {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .movie-bg {
+    background: url('/assets/images/poster_placeholder.jpg') !important;
+    padding: 0 !important;
+    -webkit-box-shadow: 0px 8px 20px -1px rgba(0,0,0,0.2) !important;
+    -moz-box-shadow: 0px 8px 20px -1px rgba(0,0,0,0.2) !important;
+    box-shadow: 0px 8px 20px -1px rgba(0,0,0,0.2) !important;
+    border-radius: 2px;
+  }
+
+  .movie-bg img {
+    width: 100%;
+  }
+
+  .movie-bg .item-inner {
+    padding: 0 !important;
+    border-bottom: 0px !important;
+  }
+
+  .movie-bg .label-md {
+    margin: 0 !important;
+  }
+
+  .cinema-label {
+    font-size: 60% !important;
+    margin: 0 !important;
+    padding: 5px;
+    color: rgba(255, 255, 255, 0.5) !important;
+    white-space: nowrap;
+  }
+}

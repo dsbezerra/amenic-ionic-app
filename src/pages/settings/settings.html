@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <div style="padding-left: 12px; line-height: 1px;" (click)="scrollToTop()">
+      <img src="assets/images/logo.png" height="24" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>Notificações</ion-list-header>
+    <ion-item no-lines>
+      <ion-label>Atualizações</ion-label>
+      <ion-checkbox (ionChange)="onChange('checkbox', 'notifications:updates', $event)" >
+      </ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>Estreias</ion-label>
+      <ion-checkbox (ionChange)="onChange('checkbox', 'notifications:premieres', $event)" >
+      </ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>

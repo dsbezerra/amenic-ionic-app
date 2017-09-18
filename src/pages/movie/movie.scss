@@ -1,0 +1,257 @@
+page-movie {
+  .black-to-transparent {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+40&0.8+0,0+40 */
+    background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+  }
+
+  .container .title {
+    margin-top: 0px;
+    margin-bottom: 12px;
+  }
+
+  .movie-poster {
+    max-width: 100%;
+    background: url('/assets/images/poster_placeholder.jpg') !important;
+  }
+
+  .movie-details {
+    min-height: 160px;
+  }
+
+  .info {
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 0px;
+    margin-bottom: 6px;
+  }
+
+  .container {
+    margin-top: 240px;
+    padding: 5px;
+  }
+
+  .scroll-content {
+    margin-top: 0px !important;
+  }
+  
+  .trailer-container {
+    // margin-top: 56px;
+    background-position-y: 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-height: 240px;
+  }
+
+  .backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: -moz-linear-gradient(top, rgba(26,26,26,0) 0%, rgba(26,26,26,0.01) 1%, rgba(26,26,26,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(26,26,26,0) 0%,rgba(26,26,26,0.01) 1%,rgba(26,26,26,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(26,26,26,0) 0%,rgba(26,26,26,0.01) 1%,rgba(26,26,26,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001a1a1a', endColorstr='#1a1a1a',GradientType=0 ); /* IE6-9 */
+    width: 100%;
+    height: 240px;
+    padding-top: 56px;
+  }
+
+  .player-btn {
+    background: #191919;
+    width: 80px;
+    height: 56px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+  }
+
+  .player-btn:hover {
+    background: #ff0000;
+    cursor: pointer;
+  }
+
+  .player-btn .icon {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  .info-header {
+    font-size: 1.7rem;
+    color: #B8B8B8;
+    font-weight: bold;
+    margin-right: 8px;
+  }
+
+  .info-images {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  ul li {
+    width: 100%;
+    margin: 0;
+    padding: 6px 0px;
+    min-height: 24px;
+    line-height: 24px;
+    position: relative;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  }
+
+  ul li span {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .times {
+    margin-top: 2px;
+  }
+
+  .times span {
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin-right: 6px;
+    font-size: 12px;
+  }
+
+  .times span.closed {
+    background: #313131;
+    color: rgba(255, 255, 255, 0.3);
+  }
+  .times span.open {
+    background: #006FDE;
+    color: #fff;
+  }
+
+  .times span.empty {
+    background: #AE4040;
+  }
+
+  .weekday {
+    font-size: 12px;
+  }
+
+  .room {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: bold;
+  }
+
+  .cinema {
+    font-size: 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  .cinema span {
+    margin-left: 8px;
+  }
+
+  .website a {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    text-decoration: none;
+  }
+
+  .update {
+    position: absolute;
+    right: 0;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .disclaimer {
+    // background: rgba(255, 255, 255, 0.05);
+    font-size: 10px;
+    padding: 5px;
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .labels {
+    margin-top: 12px;
+  }
+
+  .labels > ul li {
+    padding: 0px;
+  }
+
+  .labels li > span.square {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  .open-session {
+    background: #006FDE;
+  }
+
+  .closed-session {
+    background: #313131;
+  }
+
+  .label {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: 5px;
+  }
+
+  .rating {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0px 12px;
+  }
+
+  .info-header.times {
+    margin: 0px;
+  }
+
+  .days-segment {
+    margin-bottom: 12px;
+  }
+
+  .swiper-slide {
+    font-size: 12px;
+    display: block;
+    height: auto;
+  }
+
+  ion-segment {
+    display: block;
+    white-space: nowrap;
+    font-size: 0;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        display: none;
+    }
+
+    ion-segment-button.segment-button {
+        display: inline-block;
+        min-width: 100px;
+        width: auto;
+        text-transform: none !important;
+    }
+  }
+
+  .main-content {
+    // Need to set this because something is setting to absolute making the page appear wrong
+    position: relative !important;
+  }
+}

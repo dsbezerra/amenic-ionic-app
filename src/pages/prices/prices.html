@@ -1,0 +1,80 @@
+<ion-header>
+    <ion-toolbar>
+      <div style="padding-left: 12px; line-height: 1px;" (click)="scrollToTop()">
+        <img src="assets/images/logo.png" height="24" />
+      </div>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="refetch()">
+          <ion-icon name="refresh"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content padding>
+  <div class="cinema">
+    <ion-icon name="ic_ibicinemas_filled"></ion-icon>
+    <span>IBICINEMAS</span>
+    <span *ngIf="prices.ibicinemas.website" class="website">
+      <a href={{prices.ibicinemas.website}}>Ver no site oficial</a>
+    </span>
+  </div>
+  <ion-grid *ngIf="!prices.ibicinemas.isFetching && prices.cinemais.hasData">
+    <ion-row class="borderBottom">
+      <ion-col col-5>Dias da semana</ion-col>
+      <ion-col>Inteira</ion-col>
+      <ion-col>Meia</ion-col>
+    </ion-row>
+    <ion-row *ngIf="prices.ibicinemas.data['2d'].length" style="margin-top: 6px">
+      <ion-col>Projeção 2D</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let price of prices.ibicinemas.data['2d'];" class="borderBottom">
+      <ion-col col-5 class="info">{{getWeekdaysText(price.weekdays)}}</ion-col>
+      <ion-col class="info">{{formatPrice(price.value)}}</ion-col>
+      <ion-col class="info">{{formatPrice(price.value/2)}}</ion-col>
+    </ion-row>
+    <ion-row *ngIf="prices.ibicinemas.data['3d'].length" style="margin-top: 6px">
+      <ion-col>Projeção 3D</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let price of prices.ibicinemas.data['3d'];" class="borderBottom">
+      <ion-col col-5 class="info">{{getWeekdaysText(price.weekdays)}}</ion-col>
+      <ion-col class="info">{{formatPrice(price.value)}}</ion-col>
+      <ion-col class="info">{{formatPrice(price.value/2)}}</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-spinner *ngIf="prices.ibicinemas.isFetching"></ion-spinner>
+  <p *ngIf="!prices.ibicinemas.isFetching && !prices.ibicinemas.hasData" class="info">Não foi possível encontrar preços para este cinema</p>
+  
+  <div class="cinema" style="margin-top: 18px">
+    <ion-icon name="ic_cinemais_filled"></ion-icon>
+    <span>Cinemais</span>
+    <span *ngIf="prices.cinemais.website" class="website">
+        <a href={{prices.cinemais.website}}>Ver no site oficial</a>
+      </span>
+  </div>
+  <ion-grid *ngIf="!prices.cinemais.isFetching && prices.cinemais.hasData">
+      <ion-row class="borderBottom">
+        <ion-col col-5>Dias da semana</ion-col>
+        <ion-col>Inteira</ion-col>
+        <ion-col>Meia</ion-col>
+      </ion-row>
+      <ion-row *ngIf="prices.cinemais.data['2d'].length" style="margin-top: 6px">
+        <ion-col>Projeção 2D</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let price of prices.cinemais.data['2d'];" class="borderBottom">
+        <ion-col col-5 class="info">{{getWeekdaysText(price.weekdays)}}</ion-col>
+        <ion-col class="info">{{formatPrice(price.value)}}</ion-col>
+        <ion-col class="info">{{formatPrice(price.value/2)}}</ion-col>
+      </ion-row>
+      <ion-row *ngIf="prices.cinemais.data['3d'].length" style="margin-top: 6px">
+        <ion-col>Projeção 3D</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let price of prices.cinemais.data['3d'];" class="borderBottom">
+        <ion-col col-5 class="info">{{getWeekdaysText(price.weekdays)}}</ion-col>
+        <ion-col class="info">{{formatPrice(price.value)}}</ion-col>
+        <ion-col class="info">{{formatPrice(price.value/2)}}</ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-spinner *ngIf="prices.cinemais.isFetching"></ion-spinner>
+    <p *ngIf="!prices.cinemais.isFetching && !prices.cinemais.hasData" class="info">Não foi possível encontrar preços para este cinema</p>
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <div style="padding-left: 12px; line-height: 1px;" (click)="scrollToTop()">
+      <img src="assets/images/logo.png" height="24" />
+    </div>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="refetch()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="main-content" padding>
+  <h2 class="header">Filmes em cartaz</h2>
+  <ion-grid *ngIf="!isFetchingInTheaters">
+    <ion-row *ngFor="let row of inTheatersGrid; let index=index">
+      <ion-col col-4 *ngFor="let movie of row">
+        <button ion-item class="movie-bg" (click)="goToPage('movie', movie)">
+              <img width="100%" [alt]="movie.title" [src]="movie.poster" />
+              <p class="cinema-label">{{getCinemasText(movie)}}</p>
+            </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-spinner *ngIf="isFetchingInTheaters" center></ion-spinner>
+
+  <h2 class="header">Próximos lançamentos</h2>
+  <ion-grid *ngIf="!isFetchingComingSoon">
+    <ion-row *ngFor="let row of comingSoonGrid; let index=index">
+      <ion-col col-4 *ngFor="let movie of row">
+        <button ion-item class="movie-bg" (click)="goToPage('movie', movie)">
+              <img width="100%" [alt]="movie.title" [src]="movie.poster" />
+              <p class="cinema-label">{{parseDate(movie.releaseDate)}}</p>
+            </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-spinner *ngIf="isFetchingComingSoon" center></ion-spinner>
+</ion-content>
+
+<ion-nav #main [root]="rootPage"></ion-nav>

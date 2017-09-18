@@ -1,0 +1,118 @@
+<ion-header no-border class="black-to-transparent">
+  <ion-navbar transparent>
+    <ion-title style="text-transform: capitalize">
+      {{movie.title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content parallax-header>
+  <div class="header-image">
+    <div class="trailer-container" [style.backgroundImage]="'url(' + movie.poster + ')'">
+      <iframe id="ytplayer" type="text/html" width="100%" height="240px" [src]="trustedVideoUrl" frameborder="0"></iframe>
+      <div class="backdrop" (click)="seeTrailer()">
+        <div class="player-btn" *ngIf="movie.trailer">
+          <ion-icon name="play" class="icon"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container main-content">
+    <ion-grid>
+      <ion-row class="movie-details">
+        <ion-col col-md-5 col-sm-2>
+          <img class="movie-poster" [src]="movie.poster" />
+        </ion-col>
+        <ion-col>
+          <h2 class="title" style="text-transform: capitalize">{{movie.title}}</h2>
+          <p class="info">{{getGenresText()}}</p>
+          <p class="info" *ngIf="movie.runtime">{{movie.runtime + ' min'}}</p>
+          <p class="info">{{movie.studio}}</p>
+          <p class="info-images" *ngIf="movie.rating">
+            <img src="{{getRatingImage()}}" width="24px" />
+            <span class="rating">{{getRatingText()}}</span>
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="info-header">Sinopse</span>
+          <span class="info">{{movie.plot ? movie.plot : 'Não disponível'}}</span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <p *ngIf="!isReleased" class="info-header" style="margin-left: 5px">{{getReleaseText()}}</p>
+        <ion-col *ngIf="isReleased">
+          <p class="info-header times">Horários de Exibição</p>
+          <ion-segment [(ngModel)]="currentWeekday" class="days-segment">
+            <ion-segment-button *ngFor="let item of weekdaysLabels" value={{item.key}} (click)="slideTo(item.key)">
+              {{item.label}}
+            </ion-segment-button>
+          </ion-segment>
+
+          <ion-slides centeredSlides="false" speed="200" (ionSlideWillChange)="slideWillChange()">
+            <ion-slide *ngFor="let item of weekdaysLabels">
+              <div class="cinema">
+                <ion-icon name="ic_ibicinemas_filled"></ion-icon>
+                <span>IBICINEMAS</span>
+              </div>
+              <ul>
+                <li *ngFor="let showtime of weekdays[item.key].showtimes['ibicinemas']; let index=index">
+                  <div>
+                    <span class="room">{{showtime.description}}</span>
+                  </div>
+                  <div class="times">
+                    <span *ngFor="let time of showtime.times" class="{{isSessionOpen(time) ? 'open' : 'closed'}}">
+                      {{time}}
+                    </span>
+                    <span *ngIf="showtime.times.length === 0" class="closed">
+                      Não informado
+                    </span>
+                  </div>
+                </li>
+                <li *ngIf="!weekdays[item.key].showtimes['ibicinemas'].length || movie.cinemas.indexOf('Ibicinemas') === -1">
+                  <p class="info">Sem exibições</p>
+                </li>
+              </ul>
+              <ion-spinner *ngIf="isFetchingShowtimes"></ion-spinner>
+              <br/>
+              <div class="cinema">
+                <ion-icon name="ic_cinemais_filled"></ion-icon>
+                <span>Cinemais</span>
+              </div>
+              <ul>
+                <li *ngFor="let showtime of weekdays[item.key].showtimes['cinemais']; let index=index">
+                  <div>
+                    <span class="room">{{showtime.description}}</span>
+                  </div>
+                  <div class="times">
+                    <span *ngFor="let time of showtime.times" class="{{isSessionOpen(time) ? 'open' : 'closed'}}">
+                      {{time}}
+                    </span>
+                    <span *ngIf="showtime.times.length === 0" class="closed">
+                      Não informado
+                    </span>
+                  </div>
+                </li>
+                <li *ngIf="!weekdays[item.key].showtimes['cinemais'].length || movie.cinemas.indexOf('Cinemais') === -1">
+                  <p class="info">Sem exibições</p>
+                </li>
+              </ul>
+              <ion-spinner *ngIf="isFetchingShowtimes"></ion-spinner>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div *ngIf="isReleased">
+      <div class="disclaimer">Programação e horários sujeitos a alteração sem aviso prévio</div>
+      <div class="labels">
+        <ul>
+          <li><span class="square open-session"></span><span class="label">Sessão não exibida</span></li>
+          <li><span class="square closed-session"></span><span class="label">Sessão encerrada</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ion-content>

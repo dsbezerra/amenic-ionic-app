@@ -1,0 +1,15 @@
+page-trailer {
+
+  .toolbar {
+    transition: all 400ms ease;
+  }
+
+  .backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+  }
+}
